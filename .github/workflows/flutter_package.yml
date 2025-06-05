@@ -76,8 +76,6 @@ jobs:
       
       - name: Update Git Repository References
         working-directory: ${{inputs.working_directory}}
-        with:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           sed -i 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' pubspec.yaml
 
