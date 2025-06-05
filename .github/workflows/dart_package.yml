@@ -78,6 +78,11 @@ jobs:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
 
+      - name: Configure Git to use GitHub token for private repos
+        run: git config --global url."https://${GH_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: 🎯 Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
