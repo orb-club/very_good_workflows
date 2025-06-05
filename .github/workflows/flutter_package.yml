@@ -73,11 +73,10 @@ jobs:
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v4
-
-      - name: Configure Git to use GitHub token for private repos
-        run: git config --global url."https://${GH_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      
+      - name: Update Git Repository References
+        run: |
+          sed -i '' 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/orb-club/orb-mobile.git|' packages/one_of_validator/tools/analyzer_plugin/pubspec.yaml 
 
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
