@@ -77,7 +77,11 @@ jobs:
       - name: Update Git Repository References
         working-directory: ${{inputs.working_directory}}
         run: |
-          find packages -name 'pubspec.yaml' -exec sed -i 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' {} + 
+          sed -i 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' pubspec.yaml
+
+          if [ -d "packages" ]; then
+            find packages -name 'pubspec.yaml' -exec sed -i 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' {} + 
+          fi
 
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
