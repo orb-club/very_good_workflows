@@ -76,7 +76,7 @@ jobs:
       
       - name: Update Git Repository References
         run: |
-          sed -i '' 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' pubspec.yaml 
+          sed -i '' 's|https://github.com/orb-club/orb-mobile.git|https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/orb-club/orb-mobile.git|' ${{inputs.working_directory}}/pubspec.yaml
 
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
