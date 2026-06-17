@@ -40,6 +40,9 @@
     "prettier": "^3.4.2",
     "typescript": "~5.7.2"
   },
+  "overrides": {
+    "uuid": "^11.1.1"
+  },
   "browserslist": {
     "production": [
       ">0.5%",
